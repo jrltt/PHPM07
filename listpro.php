@@ -27,27 +27,56 @@
 		/* para personas sin proyecto asignado */
 		$sentPerNoPro = "SELECT * FROM persona WHERE nomProjec IS NULL";
 		$queryPerNoPro = mysqli_query($link, $sentPerNoPro) or die ('Error en '.$sentPerNoPro.' - '. mysqli_error($link));
+		
 		/* para personas con proyecto asignado */
 		// $sentPerPro = "SELECT * FROM persona WHERE nomProjec IS NOT NULL";
 		// $queryPerPro = mysqli_query($link, $sentPerPro) or die ('Error en '.$sentPerPro.' - '. mysqli_error($link));
 
 		// se repite codigo, buscar la forma de optimizar esto
 	?>
-	<form action="list.php" method="get" name="lista">
-		<label for="proyectos">Seleccionar un proyecto:</label>
-		<select name="proyectos" id="proyectos">
-		<?php while ( $fila = mysqli_fetch_array($queryPro, MYSQL_ASSOC)) { ?>
-			<option value='<?php echo $fila['nombre']; ?>'><?php echo $fila['nombre']." - ".$fila['di']."/".$fila['df']." - ".$fila['presu']."$"; ?></option>
+	<form action="listpro.php" method="get" name="lista">
+		<table>
+			<tr>
+				<th>Nombre proyecto</th>
+				<th>Integrantes</th>
+				<th>Clear</th>
+			</tr>
+			<?php while ( $fila = mysqli_fetch_array($queryPro, MYSQL_ASSOC)) { ?>
+			<tr>
+				<td>
+					<h1><?php echo $fila['nombre'];?></h1> 
+					<ul>
+						<li>Fecha inicio: <?php echo $fila['di']; ?></li>
+						<li>Fecha fin: <?php echo $fila['df']; ?></li>
+						<li>Presupuesto: <?php echo $fila['presu']; ?>$</li>
+					</ul>
+				</td>
+				<td>
+				<?php 
+					$nomPro = $fila['nombre'];
+					$sentPerPro = "SELECT * FROM persona WHERE nomProjec='$nomPro'";
+					$queryPerPro = mysqli_query($link, $sentPerPro) or die ('Error en '.$sentPerPro.' - '. mysqli_error($link));
+					while ( $filaPersona = mysqli_fetch_array($queryPerPro, MYSQL_ASSOC)) {
+				?>
+					
+						<ul>
+							<li><?php echo $filaPersona['dni']; ?></li>
+							<li><?php echo $filaPersona['nombre']; ?></li>
+							<!-- <li><?php //echo '<img src="srcImg.php?dni='.$filaPersona['dni'].'" width=50 />'; ?></li> -->
+							<li><img src="srcImg.php?dni=<?php echo $filaPersona['dni'];?>" width=50 /></li>
+						</ul>	
+					
+				<?php 
+					} 
+				?>
+				</td>
+				<td>
+					<img src='http://wlrhoa.com/Graphics/trash-icon.gif' width=20/>
+				</td>
+			</tr>
 		<?php } ?>
-		</select>
-		<label for="personas">Personas sin proyecto asignado:</label>
-		<?php while ( $fila = mysqli_fetch_array($queryPerNoPro, MYSQL_ASSOC)) { ?>
-			<input type='checkbox' name='per[]' id='perCheckbox' value='<?php echo $fila['dni']; ?>'><?php echo $fila['dni']." - ".$fila['nombre']." - <img src=srcImg.php?dni=".$fila['dni']." width=50 height=50 alt=".$fila['nombre']."/>"; ?> <br/>
-		<?php } ?>
-	<!-- 	<label for="personas">Personas con proyecto:</label> -->
-		<?php //while ( $fila = mysqli_fetch_array($queryPerPro, MYSQL_ASSOC)) { ?>
-<!-- 			<input type='checkbox' name='per[]' id='perCheckbox' value='<?php echo $fila['dni']; ?>'><?php echo $fila['dni']." - ".$fila['nombre']." - ".$fila['nomProjec']; ?><br/> -->
-		<?php // } ?>	
+
+		</table>
 	</form>
 	<?php mysqli_close($link); ?>
 </body>
