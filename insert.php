@@ -5,6 +5,7 @@
 	*/
 ?>
 <?php //session_start(); ?>
+<?php require_once('menu.php'); ?>
 <?php 
 	/*
 	* Funcion que recibe los datos por variable de session y por $_FILES[] introducidos
@@ -97,6 +98,7 @@
 				<li>Ver listado general</li>
 			</ul>
 		</div>
+		<?php menu(); ?>
 	</body>
 	</html>
 <?php

@@ -12,6 +12,8 @@
  ?>
 <?php session_start(); ?>
 <?php require_once('insert.php') ?>
+<?php require_once('menu.php'); ?>
+
 <?
 	/*
 	* Funcion que muestra el formulario
@@ -56,6 +58,7 @@
 			</label>
 			<input type="submit" value="Crear">
 		</form>
+		<?php menu(); ?>
 	</body>
 	</html>
 <?php

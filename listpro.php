@@ -5,6 +5,8 @@
 	* - proyecto concreto y sus integrantes
 	*/
 ?>
+<?php require_once('menu.php'); ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -79,5 +81,6 @@
 		</table>
 	</form>
 	<?php mysqli_close($link); ?>
+	<?php menu(); ?>
 </body>
 </html>

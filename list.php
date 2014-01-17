@@ -2,9 +2,11 @@
 	/*
 	* Pagina que muestra lista: 
 	* - personas para añadir a un proyecto 
-	* - proyecto concreto y sus integrantes
+	* - ? proyecto concreto y sus integrantes
 	*/
 ?>
+<?php require_once('menu.php'); ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,13 +33,13 @@
 		// $sentPerPro = "SELECT * FROM persona WHERE nomProjec IS NOT NULL";
 		// $queryPerPro = mysqli_query($link, $sentPerPro) or die ('Error en '.$sentPerPro.' - '. mysqli_error($link));
 
-		// se repite codigo, buscar la forma de optimizar esto
+		// se repite codigo, buscar la forma de optimizar esto ...
 	?>
-	<form action="list.php" method="get" name="lista">
+	<form action="add.php" method="get" name="lista">
 		<label for="proyectos">Seleccionar un proyecto:</label>
 		<select name="proyectos" id="proyectos">
 		<?php while ( $fila = mysqli_fetch_array($queryPro, MYSQL_ASSOC)) { ?>
-			<option value='<?php echo $fila['nombre']; ?>'><?php echo $fila['nombre']." - ".$fila['di']."/".$fila['df']." - ".$fila['presu']."$"; ?></option>
+			<option value='<?php echo $fila['nombre']; ?>' name='proyectos'><?php echo $fila['nombre']." - ".$fila['di']."/".$fila['df']." - ".$fila['presu']."$"; ?></option>
 		<?php } ?>
 		</select>
 		<label for="personas">Personas sin proyecto asignado:</label>
@@ -46,9 +48,11 @@
 		<?php } ?>
 	<!-- 	<label for="personas">Personas con proyecto:</label> -->
 		<?php //while ( $fila = mysqli_fetch_array($queryPerPro, MYSQL_ASSOC)) { ?>
-<!-- 			<input type='checkbox' name='per[]' id='perCheckbox' value='<?php echo $fila['dni']; ?>'><?php echo $fila['dni']." - ".$fila['nombre']." - ".$fila['nomProjec']; ?><br/> -->
+	<!-- 		<input type='checkbox' name='per[]' id='perCheckbox' value='<?php echo $fila['dni']; ?>'><?php echo $fila['dni']." - ".$fila['nombre']." - ".$fila['nomProjec']; ?><br/> -->
 		<?php // } ?>	
+		<input type="submit" value="Añadir">
 	</form>
 	<?php mysqli_close($link); ?>
+	<?php menu(); ?>
 </body>
 </html>

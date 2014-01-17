@@ -23,7 +23,7 @@
 			'file' => 'soy el error de archivo'
 		);
 	?>
-	<h1>error de dni: <?php echo $errores => dni; ?></h1>
+	<h1>error de dni: <?php //echo $errores => dni; ?></h1>
 	<?php foreach ($errores as $error) {
 		//echo $msj.'<br/>';
 		echo '<br/>'.$error;
