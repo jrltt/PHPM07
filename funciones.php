@@ -77,7 +77,12 @@
 
 
 	/*
-	* Funcion que añade cambios a la BBDD segun el tipo de formulario que sea
+	* Funcion que añade cambios a la BBDD segun el tipo de formulario que recibe
+	* la la funcion, puede ser tipo add: asigna proyecto a unos dni seleccionados
+	* por el usuario o bien puede ser tipo remove: actualiza la BBDD y quita del 
+	* proyecto a las personas seleccionadas.
+	* La funcion hace una pequeña comprobación en el tipo:add para chekear que el proyecto
+	* que se quiere añadir esta en la BBDD. No tengo claro que haga falta o no
 	*/
 	function add() 
 	{
