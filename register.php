@@ -8,7 +8,7 @@
  ?>
 <?php session_start(); ?>
 <?php require_once('insert.php'); ?>
-<?php require_once('menu.php'); ?>
+<?php require_once('funciones.php'); ?>
 <?
 	/*
 	* Funcion que muestra el formulario

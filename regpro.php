@@ -12,7 +12,7 @@
  ?>
 <?php session_start(); ?>
 <?php require_once('insert.php') ?>
-<?php require_once('menu.php'); ?>
+<?php require_once('funciones.php'); ?>
 
 <?
 	/*
@@ -63,18 +63,6 @@
 	</html>
 <?php
 	} // final funcion form
-
-
-	/*
-	* Funcion sacada de php.net para validar fechas
-	* Devuelve true o false, segun como se inserte
-	*/
-	function validateDate($date, $format = 'Y-m-d H:i:s')
-	{
-	    $d = DateTime::createFromFormat($format, $date);
-	    return $d && $d->format($format) == $date;
-	}
-
 ?>
 <?php 
 	/* Comprobación de los datos introducidos */
