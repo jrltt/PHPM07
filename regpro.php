@@ -103,7 +103,7 @@
 		$feIn = new DateTime ($_GET['ini']);
 		$feFi = new DateTime ($_GET['fin']);
 		if ( $feIn > $feFi) {
-			$erFechaOrden = 'La fecha de fin no puede ser menor a la fecha de Inicio';
+			$erFechaOrden = 'La fecha de fin no puede ser anterior a la fecha de Inicio';
 		} else {
 			$_SESSION['ini'] = $_GET['ini'];
 			$_SESSION['fin'] = $_GET['fin'];
