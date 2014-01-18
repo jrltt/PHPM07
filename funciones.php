@@ -32,6 +32,8 @@
 	*/
 	function form ($paramTipo) 
 	{
+		if ($paramTipo == 'regProyecto') echo 'Hola regProyecto';
+		else echo 'Hola regPersona';
 ?>
 	<!doctype html>
 	<html lang="en">
