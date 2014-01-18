@@ -27,7 +27,8 @@
 		$sentPro = "SELECT * FROM proyecto";
 		$queryPro = mysqli_query($link, $sentPro) or die ('Error en '.$sentPro.' - '.mysqli_error($link));
 		/* para personas sin proyecto asignado */
-		$sentPerNoPro = "SELECT * FROM persona WHERE nomProjec IS NULL";
+		//$sentPerNoPro = "SELECT * FROM persona WHERE nomProjec IS NULL";
+		$sentPerNoPro = "SELECT * FROM persona";
 		$queryPerNoPro = mysqli_query($link, $sentPerNoPro) or die ('Error en '.$sentPerNoPro.' - '. mysqli_error($link));
 		/* para personas con proyecto asignado */
 		// $sentPerPro = "SELECT * FROM persona WHERE nomProjec IS NOT NULL";
@@ -44,13 +45,14 @@
 		</select>
 		<label for="personas">Personas sin proyecto asignado:</label>
 		<?php while ( $fila = mysqli_fetch_array($queryPerNoPro, MYSQL_ASSOC)) { ?>
-			<input type='checkbox' name='per[]' id='perCheckbox' value='<?php echo $fila['dni']; ?>'><?php echo $fila['dni']." - ".$fila['nombre']." - <img src=srcImg.php?dni=".$fila['dni']." width=50 height=50 alt=".$fila['nombre']."/>"; ?> <br/>
+			<input type='checkbox' name='per[]' id='perCheckbox' value='<?php echo $fila['dni']; ?>'><?php echo $fila['dni']." - ".$fila['nombre']." - <img src=srcImg.php?dni=".$fila['dni']." width=50 height=50 alt=".$fila['nombre']."/>" ." - Proyecto: ".$fila['nomProjec'] ; ?> <br/>
 		<?php } ?>
 	<!-- 	<label for="personas">Personas con proyecto:</label> -->
 		<?php //while ( $fila = mysqli_fetch_array($queryPerPro, MYSQL_ASSOC)) { ?>
 	<!-- 		<input type='checkbox' name='per[]' id='perCheckbox' value='<?php echo $fila['dni']; ?>'><?php echo $fila['dni']." - ".$fila['nombre']." - ".$fila['nomProjec']; ?><br/> -->
 		<?php // } ?>	
 		<input type="submit" value="Añadir">
+		<input type="hidden" name="tipo" value="add">
 	</form>
 	<?php mysqli_close($link); ?>
 	<?php menu(); ?>

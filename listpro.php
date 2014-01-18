@@ -36,8 +36,8 @@
 
 		// se repite codigo, buscar la forma de optimizar esto
 	?>
-	<form action="listpro.php" method="get" name="lista">
-		<table>
+	<form action='add.php' method="get" name="lista">
+		<table border="1">
 			<tr>
 				<th>Nombre proyecto</th>
 				<th>Integrantes</th>
@@ -62,6 +62,7 @@
 				?>
 					
 						<ul>
+							<li><input type="checkbox" name="quitar[]" id="persona" value='<?php echo $filaPersona['dni'];?>'></li>
 							<li><?php echo $filaPersona['dni']; ?></li>
 							<li><?php echo $filaPersona['nombre']; ?></li>
 							<!-- <li><?php //echo '<img src="srcImg.php?dni='.$filaPersona['dni'].'" width=50 />'; ?></li> -->
@@ -77,8 +78,9 @@
 				</td>
 			</tr>
 		<?php } ?>
-
 		</table>
+		<input type="submit" value="Enviar">
+	  	<input type="hidden" name="tipo" value="remove">
 	</form>
 	<?php mysqli_close($link); ?>
 	<?php menu(); ?>

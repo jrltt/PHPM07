@@ -18,7 +18,7 @@
 	/*
 	* Funcion que muestra el formulario
 	*/
-	function form ($erNomPro, $erFechas, $erPres) 
+	function form ($erNomPro, $erFechaOrden, $erPres) 
 	{
 ?>
 	<!doctype html>
@@ -46,11 +46,11 @@
 			</label>
 			<label for="ini">Fecha inicio
 				<input type="date" name="ini" id="ini">
-				<spam class="status"><?php echo $erFechas; ?></spam>
+				<spam class="status"><?php //echo $erFechaFormat; ?></spam>
 			</label>
 			<label for="fin">Fecha fin
 				<input type="date" name="fin" id="fin">
-				<spam class="status"><?php echo $erFechas; ?></spam>
+				<spam class="status"><?php echo $erFechaOrden; ?></spam>
 			</label>
 			<label for="pres">Presupuesto
 				<input type="number" name="pres">
@@ -64,28 +64,17 @@
 <?php
 	} // final funcion form
 
-	/*
-	* Funcion que recibe la fecha del input:date y la transforma para insertarla en la BBDD
-	* @return: la fecha en formato d/m/Y
-	*/
-	function pasarFecha($param)
-	{
-		date_default_timezone_set('Europe/Madrid');
-		$fechaIn = strtotime($param);
-		$ahora = time();
-		$tmpFecha = explode('-', $param, 3);
-		$fechaOrd = "$tmpData[2]-$tmpData[1]-$tmpData[0]";
-		return $fechaOrd;
-	}
 
 	/*
 	* Funcion sacada de php.net para validar fechas
+	* Devuelve true o false, segun como se inserte
 	*/
 	function validateDate($date, $format = 'Y-m-d H:i:s')
 	{
 	    $d = DateTime::createFromFormat($format, $date);
 	    return $d && $d->format($format) == $date;
 	}
+
 ?>
 <?php 
 	/* Comprobación de los datos introducidos */
@@ -101,32 +90,42 @@
 			$erNomPro = 'Min.2/Max.10 - Permite letras y números';
 		}
 
-		/* Comprobar el nombre */
-		// $regExpNom = '/^[0-9]{3,10}/';
-		// if (preg_match($regExpNom, $_POST['f_in'])) {
-		// 	$_SESSION['f_in'] = $_POST['f_in'];
-		// } else {
-		// 	$erFecha = 'Ha habido un error. Min.3/Máx.10';
+		/* primero compruebo que las fechas esten bien introducidas y si estan bien escritas las compara entre ellas */
+		// if ( validateDate($_GET['ini'], 'd-m-Y ') || validateDate($_GET['ini'], 'Y-m-d') ) {
+		// 	$erFechaFormat= 'Formato erroneo. Permitido d-m-Y o Y-m-d';
+		// } 
+		// if ( validateDate($_GET['fin'], 'd-m-Y') || validateDate($_GET['fin'], 'Y-m-d') ) {
+		// 	$erFechaFormat= 'Formato erroneo. Permitido d-m-Y o Y-m-d';
 		// }
+		// Algo estoy haciendo mal que no consigo comprobar que escriba bien la fecha desde firefox
 
-		/* comprobar que las fechas sean numero y que la f_fi no sea menor que f_in */
-		 $erFechas = 'mal';
+
+		$feIn = new DateTime ($_GET['ini']);
+		$feFi = new DateTime ($_GET['fin']);
+		if ( $feIn > $feFi) {
+			$erFechaOrden = 'La fecha de fin no puede ser menor a la fecha de Inicio';
+		} else {
+			$_SESSION['ini'] = $_GET['ini'];
+			$_SESSION['fin'] = $_GET['fin'];
+		}
 
 		/* comprobar que el presupuesto sean números */
-		$regExpNum = '/^[0-9]{6}$/';
+		$regExpNum = '/^[0-9]{3,6}/';
 		if ( preg_match($regExpNum, $_GET['pres'])) {
 			$_SESSION['pres'] = $_GET['pres'];
 		} else {
 			$erPres = 'El presupuesto solo puede tener números. Max.6 digitos';
 		}
 
+
 		/* Si ha habido algun error */
-		if ($erNomPro || $erPres) {
-			form($erNomPro, $erFechas, $erPres);
+		if ($erNomPro || $erFechaOrden || $erPres) {
+			//echo 'si hay error: '.$_GET['ini'];
+			form($erNomPro, $erFechaOrden, $erPres);
 		} else {
 			success('proyecto');
 		}
 	} else {
-		form($erNomPro, $erFechas, $erPres);
+		form($erNomPro, $erFechaOrden, $erPres);
 	}
  ?>

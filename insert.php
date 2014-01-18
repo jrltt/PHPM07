@@ -48,12 +48,13 @@
 				//mysqli_query($link, $sentencia) or die ('Error en: '.$sentencia.' - '. mysqli_error($link));
 				$log .= '<br/>Error al subir el archivo al servidor';
 			}
-		} else {
+		} else if ($paramTipo == 'proyecto' ) {
 			//$log .= 'Formulario procedente de proyecto';
 			$nomPro = $_SESSION['nomPro'];
 			//$log .= 'nompro: '. $nomPro;
 			$fechaIn = $_SESSION['ini'];
 			$fechaOut = $_SESSION['fin'];
+
 			$pres = $_SESSION['pres'];
 			$sentencia = "INSERT INTO reyes.proyecto(nombre,di,df,presu) VALUES ('$nomPro','$fechaIn', '$fechaOut', '$pres');";
 			mysqli_query($link, $sentencia) or die ('Error en: '.$sentencia.' - '. mysqli_error($link));
@@ -71,7 +72,7 @@
 		//con la funcion thatsAll imprimo el msj de OK y muestro un Log con info adicional
 		thatsAll($paramTipo, $log);
 	}
-	
+		
 	/*
 	* Funcion que crea un html donde muestra un msj de OK y los datos del log
 	* $paramForm: tipo de formulario de registro, persona o proyecto
