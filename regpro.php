@@ -11,7 +11,7 @@
 	*/
  ?>
 <?php session_start(); ?>
-<?php require_once('insert.php') ?>
+<?php //require_once('insert.php') ?>
 <?php require_once('funciones.php'); ?>
 
 <?
@@ -57,6 +57,7 @@
 				<span class="status"><?php echo $erPres; ?></span>
 			</label>
 			<input type="submit" value="Crear">
+			<input type="hidden" name="tipo" value="regProyecto">
 		</form>
 		<?php menu(); ?>
 	</body>
@@ -111,7 +112,7 @@
 			//echo 'si hay error: '.$_GET['ini'];
 			form($erNomPro, $erFechaOrden, $erPres);
 		} else {
-			success('proyecto');
+			success('regProyecto');
 		}
 	} else {
 		form($erNomPro, $erFechaOrden, $erPres);

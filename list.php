@@ -5,7 +5,7 @@
 	* - ? proyecto concreto y sus integrantes
 	*/
 ?>
-<?php require_once('menu.php'); ?>
+<?php require_once('funciones.php'); ?>
 
 <!doctype html>
 <html lang="en">
@@ -56,5 +56,7 @@
 	</form>
 	<?php mysqli_close($link); ?>
 	<?php menu(); ?>
+	<?php $_SESSION['error']['dni'] = 'error session dni';
+	echo $_SESSION['error']['dni']; ?>
 </body>
 </html>

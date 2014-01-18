@@ -17,8 +17,8 @@
 		<h3>Menu</h3>
 		<ul>
 			<li><a href="index.php">Index</a></li>
-			<li><a href="register.php">Registrar persona</a></li>
-			<li><a href="regpro.php">Registrar proyecto</a></li>
+			<li><a href="register.php?usa=regPersona">Registrar persona</a></li>
+			<li><a href="register.php?usa=regProyecto">Registrar proyecto</a></li>
 			<li><a href="list.php">Añadir personas a proyectos</a></li>
 			<li><a href="listpro.php">Gestionar proyectos</a></li>
 		</ul>
@@ -26,7 +26,43 @@
 <?php
 	}
 ?>
+<?
+	/*
+	* Funcion que muestra el formulario
+	*/
+	function form ($paramTipo) 
+	{
+?>
+	<!doctype html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Formulario de registro de Personas</title>
+	</head>
+	<body>
+		<h1>Formulario de registro de personas</h1>
+		<form action="register.php" method="POST" enctype="multipart/form-data" id="reg">
+			<label for="dni">DNI
+				<input type="text" name="dni">
+				<span class="status"><?php echo $_SESSION['error']['dni']; ?></span>
+			</label>
+			<label for="name">Nombre
+				<input type="text" name="name">
+				<span class="status"><?php echo $_SESSION['error']['name']; ?></span>
+			</label>
+			<label for="img">Avatar
+				<input type="file" name="img">
+			</label>
+			<input type="submit" value="Crear">
+			<input type="hidden" name="tipo" value="regPersona">
+		</form>
+	</body>
+	</html>
 <?php
+	} 
+?>
+<?php
+	
 	/*
 	* Funcion sacada de php.net para validar fechas
 	* Devuelve true o false, segun como se inserte
@@ -36,7 +72,11 @@
 	    $d = DateTime::createFromFormat($format, $date);
 	    return $d && $d->format($format) == $date;
 	}
-	
+
+
+	/*
+	* Funcion que añade cambios a la BBDD segun el tipo de formulario que sea
+	*/
 	function add() 
 	{
 		if (isset($_GET['tipo'])) {
@@ -82,5 +122,74 @@
 			}
 	 	}
 	}
-	
+
+
+	/*
+	* Funcion que recibe los datos por variable de session y por $_FILES[] introducidos
+	* por el usuario, para registrarlo en la BBDD
+	*/
+	function success($paramTipo)
+	{
+		//conexion con la bbdd
+		$link = mysqli_connect("localhost", "root", "1234") or die ('No se puede conectar con mysql'.mysqli_error($link));
+		//seleccion de la tabla
+		mysqli_select_db($link, "reyes") or die ('No se puede conectar con la tabla persona');
+		if ( $paramTipo == 'regPersona' ) {
+			//guardo en variables la info a almacenar en la bbdd
+			$dni = $_SESSION['dni'];
+			$name = $_SESSION['name'];
+			$img = $_FILES['img']['tmp_name'];
+
+			if ( $img != "none" ) {
+				$file = @imagecreatefromjpeg($img);
+				ob_start();
+				imagejpeg($file);
+				$jpg = ob_get_contents();
+				ob_end_clean();
+				$jpg = str_replace('##', '##', mysqli_real_escape_string($link, $jpg));
+				$sentencia = "INSERT INTO reyes.persona(dni,nombre,foto) VALUES ('$dni', '$name', '$jpg')";
+				mysqli_query($link, $sentencia) or die ('Error en: '.$sentencia.' - '. mysqli_error($link));
+			} 
+		} else if ($paramTipo == 'regProyecto' ) {
+			$nomPro = $_SESSION['nomPro'];
+			$fechaIn = $_SESSION['ini'];
+			$fechaOut = $_SESSION['fin'];
+
+			$pres = $_SESSION['pres'];
+			$sentencia = "INSERT INTO reyes.proyecto(nombre,di,df,presu) VALUES ('$nomPro','$fechaIn', '$fechaOut', '$pres');";
+			mysqli_query($link, $sentencia) or die ('Error en: '.$sentencia.' - '. mysqli_error($link));
+			
+		}
+		//finalizo la sessión
+		session_destroy();
+		//cierro la conexión con la bbdd
+		mysqli_close($link);
+		//con la funcion thatsAll imprimo el msj de OK y muestro un Log con info adicional
+		thatsAll($paramTipo);
+	}
 ?>
+
+<?php	
+	/*
+	* Funcion que crea un html donde muestra un msj de OK 
+	*/
+	function thatsAll($paramForm) 
+	{
+?>
+	<!doctype html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>That's all folks!</title>
+	</head>
+	<body>
+		<div class="head">
+			<h1>Datos introducidos correctamente</h1>
+			<h3>Formulario utilizado <?php echo $paramForm; ?></h3>
+		</div>
+	<?php menu(); ?>
+	</body>
+	</html>
+<?php
+	}
+ ?>
