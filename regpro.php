@@ -18,7 +18,7 @@
 	/*
 	* Funcion que muestra el formulario
 	*/
-	function form ($erNomPro, $erFechaOrden, $erPres) 
+	function formPro ($erNomPro, $erFechaOrden, $erPres) 
 	{
 ?>
 	<!doctype html>
@@ -110,11 +110,11 @@
 		/* Si ha habido algun error */
 		if ($erNomPro || $erFechaOrden || $erPres) {
 			//echo 'si hay error: '.$_GET['ini'];
-			form($erNomPro, $erFechaOrden, $erPres);
+			formPro($erNomPro, $erFechaOrden, $erPres);
 		} else {
 			success('regProyecto');
 		}
 	} else {
-		form($erNomPro, $erFechaOrden, $erPres);
+		formPro($erNomPro, $erFechaOrden, $erPres);
 	}
  ?>

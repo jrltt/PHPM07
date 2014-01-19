@@ -17,8 +17,8 @@
 		<h3>Menu</h3>
 		<ul>
 			<li><a href="index.php">Index</a></li>
-			<li><a href="register.php?usa=regPersona">Registrar persona</a></li>
-			<li><a href="register.php?usa=regProyecto">Registrar proyecto</a></li>
+			<li><a href="register.php">Registrar persona</a></li>
+			<li><a href="regpro.php">Registrar proyecto</a></li>
 			<li><a href="list.php">Añadir personas a proyectos</a></li>
 			<li><a href="listpro.php">Gestionar proyectos</a></li>
 		</ul>
@@ -26,43 +26,7 @@
 <?php
 	}
 ?>
-<?
-	/*
-	* Funcion que muestra el formulario
-	*/
-	function form ($paramTipo) 
-	{
-		if ($paramTipo == 'regProyecto') echo 'Hola regProyecto';
-		else echo 'Hola regPersona';
-?>
-	<!doctype html>
-	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Formulario de registro de Personas</title>
-	</head>
-	<body>
-		<h1>Formulario de registro de personas</h1>
-		<form action="register.php" method="POST" enctype="multipart/form-data" id="reg">
-			<label for="dni">DNI
-				<input type="text" name="dni">
-				<span class="status"><?php echo $_SESSION['error']['dni']; ?></span>
-			</label>
-			<label for="name">Nombre
-				<input type="text" name="name">
-				<span class="status"><?php echo $_SESSION['error']['name']; ?></span>
-			</label>
-			<label for="img">Avatar
-				<input type="file" name="img">
-			</label>
-			<input type="submit" value="Crear">
-			<input type="hidden" name="tipo" value="regPersona">
-		</form>
-	</body>
-	</html>
-<?php
-	} 
-?>
+
 <?php
 	
 	/*

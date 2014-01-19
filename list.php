@@ -56,7 +56,5 @@
 	</form>
 	<?php mysqli_close($link); ?>
 	<?php menu(); ?>
-	<?php $_SESSION['error']['dni'] = 'error session dni';
-	echo $_SESSION['error']['dni']; ?>
 </body>
 </html>
