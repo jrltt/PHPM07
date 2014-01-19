@@ -1,8 +1,13 @@
 <?php 
 	/*
-	* Pagina que muestra lista: 
-	* - personas para añadir a un proyecto 
-	* - ? proyecto concreto y sus integrantes
+	* Página que muestra la lista de personas sin asignar proyecto y debajo los que ya tienen asignado un proyecto
+	* Actualiza la información, no borra nada. 
+	* Se podria haber juntado todo en funciones y ahorrarme dos php .. falta de tiempo
+	*
+	* Autor: Joaquín Reyes Lettieri
+	* Fecha: 17.01.14
+	* Version: 1.0
+	*
 	*/
 ?>
 <?php require_once('funciones.php'); ?>
@@ -18,7 +23,7 @@
 	<div class="wrap">
 		<?php 
 			/* Conexion con la BBDD */
-			$link = mysqli_connect("localhost", "root", "1234") or die ('No se puede conectar con mysql'.mysqli_error($link));
+			$link = mysqli_connect("localhost", "root", "") or die ('No se puede conectar con mysql'.mysqli_error($link));
 			mysqli_select_db($link, "reyes") or die ('No se puede seleccionar la tabla reyes');
 			/* para proyectos */
 			$sentPro = "SELECT * FROM proyecto";

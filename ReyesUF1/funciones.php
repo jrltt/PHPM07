@@ -1,6 +1,7 @@
 <?php 
 	/*
 	* Archivo que contiene todas las funciones del proyecto
+	*
 	* Autor: Joaquín Reyes Lettieri
 	* Version: 1.0
 	* Fecha: 18.01.14
@@ -54,7 +55,7 @@
 	 		$tipo = $_GET['tipo'];
 	 		
 	 		//conecto con la bbdd
-	 		$link = mysqli_connect("localhost", "root", "1234") or die ('No se puede conectar con la BBDD '.mysqli_error($link));
+	 		$link = mysqli_connect("localhost", "root", "") or die ('No se puede conectar con la BBDD '.mysqli_error($link));
 			mysqli_select_db($link, "reyes") or die ('No se puede conectar con la tabla reyes');
 
 	 		if ($tipo == 'add') { //formulario tipo:add, añadir personas a proyecto
@@ -102,7 +103,7 @@
 	function success($paramTipo)
 	{
 		//conexion con la bbdd
-		$link = mysqli_connect("localhost", "root", "1234") or die ('No se puede conectar con mysql'.mysqli_error($link));
+		$link = mysqli_connect("localhost", "root", "") or die ('No se puede conectar con mysql'.mysqli_error($link));
 		//seleccion de la tabla
 		mysqli_select_db($link, "reyes") or die ('No se puede conectar con la tabla persona');
 		if ( $paramTipo == 'regPersona' ) {

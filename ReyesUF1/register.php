@@ -1,9 +1,13 @@
 <?php 
 	/*
 	* Pagina para registrar personas con un formulario
-	* que comprueba que todo este correcto. Si esta bien envia
-	* a la página success.php, en caso contrario vuelve a printar
+	* que comprueba que todo este correcto. Si esta bien 
+	* utiliza la funcion success(), en caso contrario vuelve a printar
 	* el formulario, mostrando donde esta el error
+	*
+	* Autor: Joaquín Reyes Lettieri
+	* Fecha: 17.01.14
+	* Version: 1.2
 	*/
 ?>
 <?php session_start(); ?>

@@ -1,3 +1,12 @@
+<?php 
+	/*
+	* Ejercicio Gestion de proyectos.
+	* 
+	* Autor: Joaquín Reyes Lettieri
+	* Fecha: 17.01.14
+	* Version: 1.0
+	*/
+ ?>
 <?php require_once('funciones.php'); ?>
 <!doctype html>
 <html lang="en">

@@ -4,6 +4,9 @@
 	* en la BBDD
 	*
 	* Autor: Joaquín Reyes Lettieri
+	* Fecha: 18.01.14
+	* Version: 1.0
+	*
 	*/
  ?>
  <?php require_once('funciones.php'); ?>

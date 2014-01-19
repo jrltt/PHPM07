@@ -2,12 +2,13 @@
 	/*
 	* Pagina para registrar proyectos a travez de un formulario
 	* que comprueba que todo sea correcto. Si esta bien envia
-	* a la página success.php, en caso contrario vuelve a printar
+	* utiliza la funcion success(), en caso contrario vuelve a printar
 	* el formulario, indicando el error.
 	*
 	* Autor: Joaquín Reyes Lettieri
-	* Version: 1.0
 	* Fecha: 15.01.14
+	* Version: 1.0
+	*
 	*/
  ?>
 <?php session_start(); ?>

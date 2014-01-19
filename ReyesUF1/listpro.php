@@ -1,8 +1,12 @@
 <?php 
 	/*
-	* Pagina que muestra lista: 
-	* - personas para añadir a un proyecto 
-	* - proyecto concreto y sus integrantes
+	* Pagina que muestra lista de los proyectos con sus integrantes y debajo
+	* una lista de personas sin proyecto. Solo se pueden modificar los que tienen 
+	* asignado un proyecto.
+	* 
+	* Autor: Joaquín Reyes Lettieri
+	* Fecha: 17.01.14
+	* Version: 1.0
 	*/
 ?>
 <?php require_once('funciones.php'); ?>
@@ -19,7 +23,7 @@
 		<h1>Gestión de los proyectos</h1>
 		<?php 
 			/* Conexion con la BBDD */
-			$link = mysqli_connect("localhost", "root", "1234") or die ('No se puede conectar con mysql'.mysqli_error($link));
+			$link = mysqli_connect("localhost", "root", "") or die ('No se puede conectar con mysql'.mysqli_error($link));
 			mysqli_select_db($link, "reyes") or die ('No se puede seleccionar la tabla reyes');
 			/* para proyectos */
 			$sentPro = "SELECT * FROM proyecto";
