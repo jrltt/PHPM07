@@ -16,8 +16,10 @@
 	<link rel="stylesheet" href="style.css">
  </head>
  <body>
- 	 <?php add(); ?>
- 	 <?php menu(); ?>
+	 <div class="msj">
+	 	 <?php add(); ?>
+ 	 	<?php menu(); ?>
+	 </div>
  </body>
  </html>
 

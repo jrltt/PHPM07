@@ -162,7 +162,7 @@ input[type="submit"]:active {
     -webkit-transform: scale(.975);
     transform: scale(.975);
 }
-#lista ul {
+#lista ul , .wrap ul.perSin{
 	clear: left;
 	display: inline-block;
 	/* border-bottom: 1px solid #000; */
@@ -170,18 +170,18 @@ input[type="submit"]:active {
 	padding: 12px 0 5px;
 	width: 100%;
 }
-#lista ul li {
+#lista ul li , .wrap ul.perSin li{
 	float: left;
 	margin-left: 10px;
 	padding-top: 10px;
 }
-#lista ul li:first-child, #lista ul li:first-child+li{
+#lista ul li:first-child, #lista ul li:first-child+li, .wrap ul.perSin li:first-child{
 	padding-top: 0;
 }
-#lista ul li:last-child {
+#lista ul li:last-child , .wrap ul.perSin li:last-child{
 	/* padding-right:20px; */
 }
-#lista ul:hover {
+#lista ul:hover , .wrap ul.perSin:hover{
 	background-color: rgba(253, 232, 212, 0.5);
 }
 #lista input[type="submit"]:hover {
@@ -196,6 +196,18 @@ input[type="checkbox"] {
 }
 label[for="perCon"] {
 	margin-top: 30px;
+}
+.listpro {
+	width: 50%;
+	margin:0 auto;
+}
+.listpro h1 {
+	border-top: 1px solid black;
+	padding-top: 15px;
+	text-align: left;
+}
+ul.img li {
+	display: inline-block;
 }
 .clear {
 	clear: both;

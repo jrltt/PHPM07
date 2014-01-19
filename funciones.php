@@ -77,7 +77,7 @@
 					//$sentencia = "INSERT INTO persona(nomProjec) VALUES ('$proyecto') WHERE dni='$dni' ";
 					$sentencia = "UPDATE persona SET nomProjec='$proyecto' WHERE dni='$dni'";
 					$resultado = mysqli_query($link, $sentencia) or die ('Error en: '.$sentencia.' - '.mysqli_error($link));
-					echo '<br/>La persona con dni:'.$dni.' se ha ACTUALIZADO su informaci&oacute;n :: proyecto: '.$proyecto;
+					echo '<h1/>Dni: '.$dni.' - informaci&oacute;n actualizada - Proyecto asignado: '.$proyecto.'</h1>';
 				 } //fin bucle
 				 mysqli_close($link);
 			} else if ( $tipo == 'remove') {
@@ -88,7 +88,7 @@
 				foreach ($dniSel as $dni) {
 					$sentencia = "UPDATE persona SET nomProjec=NULL WHERE dni='$dni'";
 					$resultado = mysqli_query($link, $sentencia) or die ('Error en: '.$sentencia.' - '.mysqli_error($link));
-					echo '<br/> La persona con el dni '.$dni.' ya no tiene proyecto asignado';
+					echo '<h1>Dni: '.$dni.' - informaci&oacute;n actualizada - Ya no tiene proyecto asignado</h1>';
 				}
 			}
 	 	}
