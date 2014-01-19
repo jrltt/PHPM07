@@ -12,11 +12,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Asignar personas a proyectos</title>
-	<style>
-	label {
-		display: block;
-	}
-		</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<?php 
@@ -34,14 +30,12 @@
 		// $sentPerPro = "SELECT * FROM persona WHERE nomProjec IS NOT NULL";
 		// $queryPerPro = mysqli_query($link, $sentPerPro) or die ('Error en '.$sentPerPro.' - '. mysqli_error($link));
 
-		// se repite codigo, buscar la forma de optimizar esto
 	?>
 	<form action='add.php' method="get" name="lista">
 		<table border="1">
 			<tr>
 				<th>Nombre proyecto</th>
 				<th>Integrantes</th>
-				<th>Clear</th>
 			</tr>
 			<?php while ( $fila = mysqli_fetch_array($queryPro, MYSQL_ASSOC)) { ?>
 			<tr>
@@ -65,7 +59,6 @@
 							<li><input type="checkbox" name="quitar[]" id="persona" value='<?php echo $filaPersona['dni'];?>'></li>
 							<li><?php echo $filaPersona['dni']; ?></li>
 							<li><?php echo $filaPersona['nombre']; ?></li>
-							<!-- <li><?php //echo '<img src="srcImg.php?dni='.$filaPersona['dni'].'" width=50 />'; ?></li> -->
 							<li><img src="srcImg.php?dni=<?php echo $filaPersona['dni'];?>" width=50 /></li>
 						</ul>	
 					
@@ -73,15 +66,19 @@
 					} 
 				?>
 				</td>
-				<td>
-					<img src='http://wlrhoa.com/Graphics/trash-icon.gif' width=20/>
-				</td>
+
 			</tr>
 		<?php } ?>
 		</table>
 		<input type="submit" value="Enviar">
 	  	<input type="hidden" name="tipo" value="remove">
 	</form>
+	<ul>
+	<h3>Personas sin proyecto asignado:</h3>
+		<?php while ( $fila = mysqli_fetch_array($queryPerNoPro, MYSQL_ASSOC)) { ?>
+			<li><?php echo $fila['dni']." - ".$fila['nombre']." - <img src=srcImg.php?dni=".$fila['dni']." width=50 height=50 alt=".$fila['nombre']."/>" ." - Proyecto: ".$fila['nomProjec'] ; ?> </li>
+		<?php } ?>
+	</ul>
 	<?php mysqli_close($link); ?>
 	<?php menu(); ?>
 </body>

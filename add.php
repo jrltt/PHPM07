@@ -13,10 +13,11 @@
  <head>
  	<meta charset="UTF-8">
  	<title>Add.php</title>
+	<link rel="stylesheet" href="style.css">
  </head>
  <body>
- 	 <?php menu(); ?>
  	 <?php add(); ?>
+ 	 <?php menu(); ?>
  </body>
  </html>
 

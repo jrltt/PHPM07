@@ -14,8 +14,8 @@
 	{
 ?>
 	<div class="menu">
-		<h3>Menu</h3>
-		<ul>
+		
+		<ul><h3>Menu</h3>
 			<li><a href="index.php">Index</a></li>
 			<li><a href="register.php">Registrar persona</a></li>
 			<li><a href="regpro.php">Registrar proyecto</a></li>
@@ -68,7 +68,7 @@
 			 		if ( in_array($proyecto, $fila) ) $msjPro = 'ok';
 			 		else $msjPro = 'nope';
 			 	}
-			 	echo $msjPro;
+			 	//echo $msjPro;
 
 			 	//en el caso de los DNI no haria falta comprobarlos, porque si no se encuentra el dni no hace nada
 			 	$dniSel = $_GET['per'];
@@ -152,13 +152,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>That's all folks!</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div class="head">
-			<h1>Datos introducidos correctamente</h1>
-			<h3>Formulario utilizado <?php echo $paramForm; ?></h3>
-		</div>
-	<?php menu(); ?>
+	<div class="msj">
+		<h1>Datos introducidos correctamente</h1>
+		<h3>Formulario utilizado <?php echo $paramForm; ?></h3>
+		<?php menu(); ?>
+	</div>
+		
+	
 	</body>
 	</html>
 <?php
