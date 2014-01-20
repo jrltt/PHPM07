@@ -10,6 +10,9 @@ body, input {
 	font-weight: 100;
 	background-color: #fafafa;
 }
+ul {
+	padding: 0;
+}
 li {
 	list-style: none;
 }
