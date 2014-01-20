@@ -5,10 +5,10 @@
 	* a la página success.php, en caso contrario vuelve a printar
 	* el formulario, mostrando donde esta el error
 	*/
- ?>
+?>
 <?php session_start(); ?>
-<?php require_once('insert.php'); ?>
-<?php require_once('menu.php'); ?>
+<?php //require_once('insert.php'); ?>
+<?php require_once('funciones.php'); ?>
 <?
 	/*
 	* Funcion que muestra el formulario
@@ -21,34 +21,27 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Formulario de registro de Personas</title>
-		<style>
-			label {
-				display: block;
-				margin-right: 20px;
-			}
-			.status {
-				font-style: italic;
-				color: red;
-			}
-		</style>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<h1>Formulario de registro de personas</h1>
-		<form action="register.php" method="POST" enctype="multipart/form-data" id="reg">
-			<label for="dni">DNI
-				<input type="text" name="dni">
-				<span class="status"><?php echo $erDni; ?></span>
-			</label>
-			<label for="name">Nombre
-				<input type="text" name="name">
-				<span class="status"><?php echo $erNom; ?></span>
-			</label>
-			<label for="img">Avatar
-				<input type="file" name="img">
-			</label>
-			<input type="submit" value="Crear">
-		</form>
-		<?php menu(); ?>
+		<div class="wrap">
+			<h1>Formulario de registro de personas</h1>		
+			<form action="register.php" method="POST" enctype="multipart/form-data" id="reg">
+				<label for="dni">DNI
+					<input type="text" name="dni">
+					<span class="status"><?php echo $erDni; ?></span>
+				</label>
+				<label for="name">Nombre
+					<input type="text" name="name">
+					<span class="status"><?php echo $erNom; ?></span>
+				</label>
+				<label for="img">Avatar
+					<input type="file" name="img">
+				</label>
+				<input type="submit" value="Crear">
+			</form>
+			<?php menu(); ?>
+		</div>
 	</body>
 	</html>
 <?php
@@ -56,7 +49,7 @@
 ?>
 <?php 
 	/* Comprobación de los datos introducidos */
-	if (isset($_POST['dni'])) {
+	if ( isset($_POST['dni']) ) {
 		/* Comprobar el DNI 
 		* sacado de: http://computersandprogrammers.blogspot.com.es/2012/12/expresion-regular-reconocer-dni.html
 		* mirar la buena: http://nideaderedes.urlansoft.com/2011/10/21/funcion-en-php-para-calcular-si-un-dni-o-un-nie-son-validos/
@@ -77,10 +70,10 @@
 		}
 
 		/* Si ha habido algun error */
-		if ($msjErrorDni || $msjErrorName) {
+		if ( $msjErrorDni || $msjErrorName ) {
 			form($msjErrorDni, $msjErrorName);
 		} else {
-			success('persona');
+			success('regPersona');
 		}
 	} else {
 		form($msjErrorDni, $msjErrorName);
