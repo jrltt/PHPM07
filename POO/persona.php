@@ -5,10 +5,19 @@
 	* y le damos diferentes valores y lo mostramos por pantalla
 	*/
 
-	class Persona {
+	class Persona 
+	{
 		private $nombre;
 		private $genero;
 		private $fnacimiento;
+
+		/* Constructor de php */
+		public function __construct($n,$g,$fn)
+		{
+			$this->nombre = $n;
+			$this->genero = $g;
+			$this->fnacimiento = $fn;
+		}
 
 		public function getNombre() 
 		{
@@ -45,10 +54,4 @@
 			return $now - $this->fnacimiento;
 		}
 	}
-
-	$Pedro = new Persona();
-	$Pedro->setNombre('Pedro Guiut');
-	echo $Pedro->getNombre();
-	$Pedro->setFNacimiento('1986');
-	echo $Pedro->getEdad();
  ?>
