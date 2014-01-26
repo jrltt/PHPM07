@@ -1,16 +1,24 @@
 <?php 
 	require_once('persona.php');
-
+	/*
+	* Clase grafica de interfaz de usuario de la clase persona
+	*/
 	class GUIpersona 
 	{
 
 		private $persona;
 
+		/*
+		* Constructor
+		*/
 		public function __construct($p) 
 		{
 			$this->persona = $p;
 		}
 
+		/*
+		* Funcion para mostrar una persona
+		*/
 		public function show()
 		{
 ?>
@@ -30,7 +38,10 @@
 		</body>
 		</html>
 <?php	}
-
+		
+		/*
+		* Funcion para cambiar la persona a mostrar información
+		*/
 		public function setPersona($param)
 		{
 			$this->persona = $param;
