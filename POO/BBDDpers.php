@@ -39,7 +39,9 @@
 				$genSave = $this->perSave->getGenero();
 
 				$host = new PDO("mysql:host=localhost;dbname=test", $user, $pwd);
-				$host->exec("INSERT INTO test.persona(nombre,fn,genero) VALUES (`$this->perSave->getNombre()`,'$fnSave','$genSave')");
+				$host->exec("INSERT INTO test.persona(nombre,fn,genero) VALUES ('$nomSave','$fnSave','$genSave')");
+				echo 'Ulitmo id insertado: '. $host->lastInsertId();
+
 				$host = null;
 			}
 			catch (PDOException $e)
