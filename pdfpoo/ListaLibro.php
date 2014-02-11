@@ -1,10 +1,9 @@
 <?php 
-	class Libro 
+	class ListaLibro 
 	{
-		private $libid;
+		private $autnom;
 		private $libtitulo;
 		private $libnumpag;
-		private $autlid;
 
 		/* Constructor vacio, sin nada implementado */
 		public function __construc() {}
@@ -16,24 +15,12 @@
 		{
 			return $this->autnom.' - '.$this->libtitulo;
 		}
-		public function setLibTit($param)
-		{
-			$this->libtitulo = $param;
-		}
-		public function setLibNumPag($param)
-		{
-			$this->libnumpag = $param;
-		}
-		public function setAutID($param)
-		{
-			$this->autlid = $param;
-		}
 		/**
-		* Funcion que devuelve el ID del Autor
+		* Funcion que devuelve el nombre del Autor
 		*/
-		public function getAutID()
+		public function getNom()
 		{
-			return $this->autlid;
+			return $this->autnom;
 		}
 
 		public function getTitulo()
