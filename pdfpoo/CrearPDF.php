@@ -1,6 +1,6 @@
 <?php 
 require('fpdf.php');
-require_once('Libro.php');
+require_once('ListaLibro.php');
 
 class CrearPDF extends FPDF
 {

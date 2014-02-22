@@ -1,8 +1,6 @@
 <?php 
 	require_once('Vistas.php');
 	require_once('BaseDatos.php');
-	require_once('CrearPDF.php');
- 	require_once('ListaLibro.php');
  	require_once('Autor.php');
  	require_once('Libro.php');
 
@@ -13,9 +11,6 @@
  		$libro->setLibTit( $_POST['nomLibro'] );
  		$libro->setLibNumPag( $_POST['numPag'] );
  		$libro->setAutID( $_POST['autor'] );
- 		// echo $libro->getTitulo();
- 		// echo $libro->getNumPag();
- 		// echo $libro->getAutID();
  		
  		BaseDatos::conectar();
 		$insert = new BDInsertar();

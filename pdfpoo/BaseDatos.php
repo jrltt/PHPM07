@@ -31,9 +31,9 @@
 		{
 			try {
 				//el nombre de las columnas deben ser iguales que los nombres de los atributos de la clase
-				$resultado = parent::$conexion->query("SELECT autnom,libtitulo,libnumpag FROM test.autor JOIN test.libro ON autor.autid=libro.autlid");
+				$resultado = parent::$conexion->query("SELECT autnom,libid,libtitulo,libnumpag FROM test.autor JOIN test.libro ON autor.autid=libro.autlid");
 				//genero el mapeo
-				$resultado->setFetchMode(PDO::FETCH_CLASS,'Libro');
+				$resultado->setFetchMode(PDO::FETCH_CLASS,'ListaLibro');
 				$i = 0;
 				while ( $libro = $resultado->fetch() ) {
 					$consulta[$i++] = $libro;
@@ -63,7 +63,7 @@
 			return $consulta;
 		}
 	}
-
+	/* hago un require pq no tengo claro si hay que llamar a las clases o no */
 	require_once ('Autor.php');
 	require_once ('Libro.php');
 
@@ -99,6 +99,22 @@
 
 			} catch (PDOException $e) {
 				echo 'Error en el query: '. $e->getMessage();
+			}
+		}
+	}
+
+	require_once('ListaLibro.php');
+
+	class BDBorrar extends BaseDatos
+	{
+		public function borrarLibro($paramIDLibro)
+		{
+			try {
+				$stmt = parent::$conexion->prepare("DELETE FROM test.libro WHERE (libid = :libid) ");
+				$stmt->bindParam( ':libid', $paramIDLibro->getLibID() );
+				$stmt->execute();
+			} catch (PDOException $e) {
+				echo 'Error en el borrado'. $e->getMessage();
 			}
 		}
 	}

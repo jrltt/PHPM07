@@ -1,4 +1,5 @@
 <?php 
+	require_once('ListaLibro.php');
 	class Vistas
 	{	
 		//Constructor vacio
@@ -18,7 +19,7 @@
 					<li><a href="form-autor.php">Añadir autor</a></li>
 					<li><a href="form-libro.php">Añadir libro</a></li>
 					<li><a href="index.php?menu=crear">Mostrar listado en PDF</a></li>
-					<li><a href="index.php?menu=eliminar">Elimnar libro</a></li>
+					<li><a href="borrarLibro.php">Elimnar libro</a></li>
 				</ul>
 			</body>
 			</html>
@@ -80,6 +81,36 @@
 			</body>
 			</html>
 		<?php
+		}
+
+		public function borrarLibro() 
+		{
+			BaseDatos::conectar();
+			$consulta = new BDConsulta();
+			$arrayLibros = $consulta->consultar();
+			BaseDatos::desconectar();
+			?>
+			<!doctype html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<title>Borrar libro</title>
+			</head>
+			<body>
+				<form action="borrarLibro.php" method="GET">
+					<select name="libro" id="libro">
+						<option value="0"></option>
+						<?php 
+							foreach ($arrayLibros as $libro) {
+								echo '<option value="'.$libro->getLibID() .'">'.$libro->getNom().' - '.$libro->getTitulo().'</option>';
+							}
+						 ?>
+					</select>
+					<input type="submit" value="Eliminar">
+				</form>
+			</body>
+			</html>
+			<?php
 		}
 		public function msjFinal()
 		{
