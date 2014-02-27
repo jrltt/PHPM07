@@ -5,6 +5,8 @@
 	require("pChart2.1.4/class/pData.class.php");
 	require("pChart2.1.4/class/pDraw.class.php");
 	require("pChart2.1.4/class/pImage.class.php");
+	include("pChart2.1.4/class/pPie.class.php");
+
 	require_once('Grafico.php');
 	require_once('Receta.php');
 
@@ -26,6 +28,31 @@
 			BD::desconectar();
 			$grafico = new Graph();
 			$grafico->crearGraph($ingredientes);
+			//$grafico->crearPie($ingredientes);
+			//$grafico->crearGrafico($ingredientes);
+		}
+		else if ( $_GET['menu'] == 'listgraf' ) {
+
+			?>
+			<!doctype html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<title>imagenes</title>
+			</head>
+			<body>
+				<h1>hola</h1>
+				<img src="imgGra.php?img=pie" alt="">
+				<h1>img 2</h1>
+				<img src="imgGra.php?img=normal" alt="">
+				<h3>
+					img 4
+				</h3>
+				<img src="imgGra.php?img=otro" alt="">
+
+			</body>
+			</html>
+			<?php
 		}
 	} else {
 		?>

@@ -4,6 +4,7 @@
 		private $ingid;
 		private $ingnom;
 		private $unidad;
+		private $numrec;
 
 		public function __construc(){}
 
@@ -32,6 +33,13 @@
 		{
 			return $this->ingid;
 		}
-
+		/**
+		* Funcion que devuelve el numero de recetas
+		* donde se utiliza un ingrediente
+		*/
+		public function getNumRec()
+		{
+			return $this->numrec;
+		}
 	}
  ?>

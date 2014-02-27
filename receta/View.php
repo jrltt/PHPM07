@@ -17,6 +17,7 @@
 						<li><a href="formIng.php">Añadir ingredientes a receta</a></li>
 						<li><a href="main.php?menu=pdf">Crear PDF con lista de recetas e ingredientes</a></li>
 						<li><a href="main.php?menu=grafo">Ver gráfico de números de recete¡as por inrgediente</a></li>
+						<li><a href="main.php?menu=listgraf">graficos</a></li>
 						<li><a href="main.php">Inicio</a></li>
 					</ul>
 				

@@ -70,11 +70,11 @@
 		{
 			try {
 				$resultado = parent::$conexion->query(
-					"SELECT recnom, count(*) as numingre 
+					"SELECT ingnom, count(*) as numrec 
 					FROM rexin 
-					JOIN receta ON receta.recid=rexin.recid 
-					GROUP BY recnom");
-				$resultado->setFetchMode(PDO::FETCH_CLASS, 'Receta');
+					JOIN ingrediente ON ingrediente.ingid=rexin.ingid 
+					GROUP BY ingnom");
+				$resultado->setFetchMode(PDO::FETCH_CLASS, 'Ingrediente');
 				$i = 0;
 				while ( $receta = $resultado->fetch() ) {
 					$consulta[$i++] = $receta;
