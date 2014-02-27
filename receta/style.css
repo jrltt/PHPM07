@@ -1,0 +1,23 @@
+body {
+	font: 12px/14px Helvetica;
+}
+.wrap {
+	width: 678px;
+	margin: 2% auto;
+	padding: 25px;
+	background-color: #FAFAEF;
+}
+ul.menu {
+	list-style: none;
+	padding: 0;
+}
+ul.menu li {
+	margin-bottom: 5px;
+}
+ul.menu li a {
+	text-decoration: none;
+	color: black;
+}
+ul.menu li a:hover {
+	color: orange;
+}

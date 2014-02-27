@@ -48,10 +48,42 @@
 		{
 			try {
 				//SELECT recnom, count(*) as numIngre FROM rexin JOIN receta ON receta.recid=rexin.recid group by recnom
-				//$resultado = parent::$conexion->prepare("SELECT recnom, count(ingnom), unidad FROM receta JOIN rexin ON receta.recid=rexin.recid JOIN ingrediente ON ingrediente.ingid = rexin.ingid JOIN unidad ON ingrediente.unidad = unidad.tipo");
-			}
-		}
+				$resultado = parent::$conexion->query(
+					"SELECT recnom, ingnom, unidad
+					FROM rexin
+					JOIN receta ON receta.recid = rexin.recid
+					JOIN ingrediente ON ingrediente.ingid = rexin.ingid
+					JOIN unidad ON ingrediente.unidad = unidad.tipo
+					GROUP BY recnom, ingnom");
+				$resultado->setFetchMode(PDO::FETCH_CLASS, 'Receta');
+				$i = 0;
+				while ( $receta = $resultado->fetch() ) {
+					$consulta[$i++] = $receta;
+				}
 
+			} catch (PDOException $e) {
+				echo 'error en el select:'.$e->getMessage();
+			}
+			return $consulta;
+		}
+		public function conRecNum()
+		{
+			try {
+				$resultado = parent::$conexion->query(
+					"SELECT recnom, count(*) as numingre 
+					FROM rexin 
+					JOIN receta ON receta.recid=rexin.recid 
+					GROUP BY recnom");
+				$resultado->setFetchMode(PDO::FETCH_CLASS, 'Receta');
+				$i = 0;
+				while ( $receta = $resultado->fetch() ) {
+					$consulta[$i++] = $receta;
+				}
+			} catch (PDOException $e) {
+				echo 'error:'.$e->getMessage();
+			}
+			return $consulta;
+		}
 		public function conIngredientes()
 		{
 			try{

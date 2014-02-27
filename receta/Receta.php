@@ -3,7 +3,9 @@
 	{
 		private $recid;
 		private $recnom;
-		private $recIng;
+		private $ingnom;
+		private $unidad;
+		private $numingre;
 
 		//constructor
 		public function __construc(){}
@@ -35,10 +37,26 @@
 		}
 		/**
 		* Funcion que devuelve el ID de la receta
+		* @return ID de la receta
 		*/
 		public function getRecID()
 		{
 			return $this->recid;
+		}
+
+		public function getRecIng()
+		{
+			return $this->ingnom;
+		}
+
+		public function getNumIng()
+		{
+			return $this->numingre;
+		}
+		
+		public function getUnidad()
+		{
+			return $this->unidad;
 		}
 	}
  ?>

@@ -12,21 +12,14 @@
 		public function showIndex()
 		{
 			?>
-			<!doctype html>
-			<html lang="en">
-			<head>
-				<meta charset="UTF-8">
-				<title>Indice</title>
-			</head>
-			<body>
-				<ul>
-					<li><a href="formRec.php">Añadir receta</a></li>
-					<li><a href="formIng.php">Añadir ingredientes a receta</a></li>
-					<li><a href="pdf.php">Crear PDF con lista de recetas e ingredientes</a></li>
-					<li><a href="graph.php">Ver gráfico de números de recete¡as por inrgediente</a></li>
-				</ul>
-			</body>
-			</html>
+					<ul class="menu">
+						<li><a href="formRec.php">Añadir receta</a></li>
+						<li><a href="formIng.php">Añadir ingredientes a receta</a></li>
+						<li><a href="main.php?menu=pdf">Crear PDF con lista de recetas e ingredientes</a></li>
+						<li><a href="main.php?menu=grafo">Ver gráfico de números de recete¡as por inrgediente</a></li>
+						<li><a href="main.php">Inicio</a></li>
+					</ul>
+				
 			<?php
 		}
 		/**
@@ -40,8 +33,11 @@
 			<head>
 				<meta charset="UTF-8">
 				<title>Formulario de añadir receta</title>
+				<link rel="stylesheet" href="style.css">
 			</head>
 			<body>
+			<div class="wrap">
+				<h1>Crear receta</h1>
 				<div class="menu">
 					<?php $this->showIndex(); ?>
 				</div>
@@ -50,6 +46,7 @@
 					<input type="text" name="nomrec">
 					<input type="submit" value="Añadir">
 				</form>
+			</div>
 			</body>
 			</html>
 			<?php
@@ -67,8 +64,14 @@
 			<head>
 				<meta charset="UTF-8">
 				<title>Añadir ingredientes a una receta</title>
+				<link rel="stylesheet" href="style.css">
 			</head>
 			<body>
+			<div class="wrap">
+				<h1>Añadir ingrediente a una receta</h1>
+				<div class="menu">
+					<?php $this->showIndex(); ?>
+				</div>
 				<form action="formIng.php" method="get">
 					<label for="receta">Receta:</label>
 					<select name="receta" id="receta">
@@ -88,6 +91,7 @@
 					</select>
 					<input type="submit" value="Añadir">
 				</form>
+				</div>
 			</body>
 			</html>
 			<?php

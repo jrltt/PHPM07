@@ -12,7 +12,7 @@
 		$insert = new BDInsertar();
 		$insert->insertReceta($receta);
 		BD::desconectar();
-		//echo '<h1>insertado Correctamente</h1>';
+		echo '<h1>'.$_GET['nomrec'].' insertado correctamente</h1>';
 	} else {
 		$visual->formRec();
 	}
