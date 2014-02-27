@@ -1,0 +1,214 @@
+* {
+	margin:0;
+	padding:0;
+}
+body, input {
+    font: 14px/2em Helvetica, sans-serif;
+	font-weight: 100;
+	background-color: #fafafa;
+}
+li {
+	list-style: none;
+}
+.wrap, .msj {
+	width: 910px;
+	margin: 0 auto;
+}
+.msj {
+	width: 50%;
+}
+h1 , h2, h3 {
+	text-align: center;
+	font-weight: 100;
+}
+h1 {
+	/*text-align: center;
+	margin-top: 50px;
+	color: #FFF;
+	text-transform: uppercase;
+	font-size: 40px;
+	font-weight: 100px;
+	text-shadow: 0 0 3px #333;
+	filter: alpha(opacity=70);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	opacity: .7;*/
+	margin-top: 50px;
+	color: #020202;
+	text-transform: uppercase;
+	font-size: 22px;
+}
+/* menu */
+.menu {
+	border-top: 5px solid rgba(0,0,0,0.5);
+	width: 50%;
+	margin: 15% auto 0;
+	padding-top: 5%;
+}
+.menu ul > h3 {
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 100;
+	font-size: 14px;
+	margin-bottom: 10px;
+	background-color: rgba(156, 231, 245, 0.5);
+}
+.menu ul li {
+	margin-bottom: 5px;
+}
+.menu ul li a {
+	width: 100%;
+    height: 100%;
+    padding: .80em 0 ;
+    display: block;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 12px;
+	background-color: rgba(0,0,0,0.15);
+	color: white;
+}
+.menu ul li :hover {
+	color: black;
+	background-color: #f3f3f3;
+    -webkit-transition: .233s ease;
+    transition: .233s ease;
+
+}
+/* formularios */
+#reg, #lista {
+	width: 50%;
+	margin:2% auto 0;
+}
+.fechas {
+	border-top: 1px solid black;
+}
+.fechas label{
+	/*float: left;
+	clear: left;*/
+	width: 46%;
+	display: inline-block;
+}
+.fechas span.status {
+	clear: both;
+}
+
+label, input {
+	display: block;
+	border:0;
+}
+input {
+	width: 100%;
+    height: 100%;
+    padding: 1.25em 0 1em;
+    outline: 0;
+    margin-bottom: 5px;
+   	background-color: #f3f3f3;
+}
+input:hover {
+	background-color: white;
+}
+.status, .fechas .status {
+	font-size: 11px;
+	color: white;
+	background-color: rgba(255,0,0,0.5);
+	padding: 5px;
+	margin: 5px 0;
+	display: inline-block;
+}
+
+label {
+    font-size: .8125em; /* 13/16 */
+    top: 1.23em;
+    left: 1.23em;
+    color: #f1773b;
+    opacity: 1;
+}
+label[for="nomPro"], label[for="dni"] {
+	border-top: 1px solid black;
+}
+label[for="ini"] {
+	padding-right: 10px;
+}
+label[for="fin"] {
+	border-left: 1px solid black;
+	padding-left: 10px;
+}
+label[for="pres"], label[for="name"] {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+label[for="img"] {
+	border-bottom: 1px solid black;
+}
+input[type="submit"] {
+	text-transform: uppercase;
+    background: rgba(255, 255, 100, 0.5);
+    margin-top: 2em;
+    margin-bottom: 1em;
+    color: black;
+    padding: .75em;
+    -webkit-appearance: none; /* remove default browser <button> styling */
+    -webkit-transition: .333s ease;
+    transition: .333s ease;
+}
+input[type="submit"]:hover {
+   /* -webkit-transform: scale(1.025);
+    transform: scale(1.025);*/
+	background-color: rgba(94, 252, 94, 0.5);
+	color:black;
+    cursor: pointer;
+}
+input[type="submit"]:active {
+    -webkit-transform: scale(.975);
+    transform: scale(.975);
+}
+#lista ul , .wrap ul.perSin{
+	clear: left;
+	display: inline-block;
+	/* border-bottom: 1px solid #000; */
+	border-top: 1px solid black;
+	padding: 12px 0 5px;
+	width: 100%;
+}
+#lista ul li , .wrap ul.perSin li{
+	float: left;
+	margin-left: 10px;
+	padding-top: 10px;
+}
+#lista ul li:first-child, #lista ul li:first-child+li, .wrap ul.perSin li:first-child{
+	padding-top: 0;
+}
+#lista ul li:last-child , .wrap ul.perSin li:last-child{
+	/* padding-right:20px; */
+}
+#lista ul:hover , .wrap ul.perSin:hover{
+	background-color: rgba(253, 232, 212, 0.5);
+}
+#lista input[type="submit"]:hover {
+	background-color: rgba(255, 150, 53, 0.5);
+}
+input[type="checkbox"] {
+	width: auto;
+	height: auto;
+	padding: 20px;
+	margin: 20px;
+	float: left;
+}
+label[for="perCon"] {
+	margin-top: 30px;
+}
+.listpro {
+	width: 50%;
+	margin:0 auto;
+}
+.listpro h1 {
+	border-top: 1px solid black;
+	padding-top: 15px;
+	text-align: left;
+}
+ul.img li {
+	display: inline-block;
+}
+.clear {
+	clear: both;
+}
