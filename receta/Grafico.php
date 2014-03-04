@@ -5,8 +5,10 @@ class Graph
 {
 	public function crearGraph($paramReceta){
 		/* Create and populate the pData object */
-		foreach ($paramReceta as $receta => $value) {
+		//$i = 0;
+		foreach ($paramReceta as $value) {
 			$arrayReceta[$value->getIngNom()] = $value->getNumRec();
+			//
 		}
 		//print_r($arrayReceta);
 		// print_r($arrayReceta);
@@ -16,24 +18,26 @@ class Graph
 		// 	$array['ing'][$i] = $receta->getNumIng();
 		// 	$i++;
 		// }
-		// print_r($array);
+		// print_r($arrayReceta);
 		$MyData = new pData();
  
 		
 		foreach ($arrayReceta as $nom => $cant) {
-			$MyData->addPoints($cant, $nom);
-			//$MyData->addPoints(90, 'ingredientes');
+			$MyData->addPoints($cant, 'cantidad');
+			$MyData->addPoints($nom, 'nombre');		
 		}
+		// $MyData->addPoints($arrayCan, 'cantidad');
+		// $MyData->addPoints($arrayNombre, 'nombre');
 		//$MyData->addPoints($arrayReceta,"Recetas");
 		// foreach ($arrayReceta as $nomReceta => $valor) {
 		// 	$MyData->SetSerieName($nomReceta,$valor);
 		// }
-		$MyData->setAxisName(0,"Número de recetas");
-		$MyData->setSerieDescription("Receta","Receta");
-		$MyData->setAbscissa("Receta");
+		$MyData->setAxisName(0,"cantidad");
+		//$MyData->setSerieDescription("Receta","nombre");
+		$MyData->setAbscissa("nombre");
 
 		/* Create the pChart object */
-		$myPicture = new pImage(600,300,$MyData);
+		$myPicture = new pImage(600,350,$MyData);
 
 		/* Turn of Antialiasing */
 		$myPicture->Antialias = FALSE;
