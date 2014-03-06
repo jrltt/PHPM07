@@ -9,7 +9,7 @@
 			<ul>
 				<li><a href="visalta.php">Dar de alta a un visitante</a></li>
 				<li><a href="visllistat.php">Ver lista  de visitantes por empresa</a></li>
-				<li><a href="vispdf.php">Lista en formato</a></li>
+				<li><a href="vispdf.php">Lista en formato PDF</a></li>
 				<li><a href=""></a></li>
 				<li><a href=""></a></li>
 				<li><a href="index.php">Inicio</a></li>
@@ -93,13 +93,43 @@
 				<title>Lista de visitantes por empresa</title>
 			</head>
 			<body>
+				<div class="menu">
+					<?php $this->showIndex(); ?>
+				</div>
 				<h1>Lista de visitantes por empresa</h1>
-				<?php foreach ($array as $v) {
-					$visi[$v->getEmp()] = array( [$v->getNom()] => array($v->getDia1(),$v->getDia2(),$v->getDia3(),$v->getDia4()));
-				} 
-				print_r(array_keys($visi));
-				print_r(array_values($visi));
-				?>
+				<table border="1">
+					<tr>
+						<td>Empresa</td>
+						<td>Visitante</td>
+						<td>Día 1</td>
+						<td>Día 2</td>
+						<td>Día 3</td>
+						<td>Día 4</td>	
+					</tr>
+					<?php 
+					foreach ($array as $v) {
+						$nomEmp = $v->getEmpNom();
+						$nomVis = $v->getNom();
+						$d1 = $v->getDia1(); 
+						$d2 = $v->getDia2();
+						$d3 = $v->getDia3();
+						$d4 = $v->getDia4();
+						if ($d1 == 1) {
+							$d1 = 'X';
+						}
+						if ($d2 == 1) {
+							$d2 = 'X';
+						}
+						if ($d3 == 1) {
+							$d3 = 'X';
+						}
+						if ($d4 == 1) {
+							$d4 = 'X';
+						}
+						echo '<tr><td>'.$nomEmp.'</td><td>'.$nomVis.'</td><td>'.$d1.'</td><td>'.$d2.'</td><td>'.$d3.'</td><td>'.$d4 .'</td></tr>';
+					} 
+					?>
+				</table>
 			</body>
 			</html>
 			<?php

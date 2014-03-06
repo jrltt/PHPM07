@@ -10,6 +10,7 @@
 		private $visdia3;
 		private $visdia4;
 		private $empid;
+		private $empnom;
 
 		public function __construc(){}
 		
@@ -35,26 +36,37 @@
 			$this->empid = $param;
 		}
 
-		public function getNom() {
+		public function getNom() 
+		{
 			return $this->visnom;
 		}
-		public function getData() {
+		public function getData() 
+		{
 			return $this->visdatan;
 		}
-		public function getDia1() {
+		public function getDia1() 
+		{
 			return $this->visdia1;
 		}
-		public function getDia2() {
+		public function getDia2() 
+		{
 			return $this->visdia2;
 		}
-		public function getDia3() {
+		public function getDia3() 
+		{
 			return $this->visdia3;
 		}
-		public function getDia4() {
+		public function getDia4() 
+		{
 			return $this->visdia4;
 		}
-		public function getEmp() {
+		public function getEmp() 
+		{
 			return $this->empid;
+		}
+		public function getEmpNom()
+		{
+			return $this->empnom;
 		}
 	} 
 ?>

@@ -82,7 +82,7 @@
 				 mysqli_close($link);
 			} else if ( $tipo == 'remove') {
 				$sentPer = "SELECT * FROM persona";
-				$queryPer = mysqli_query($link, $sentPer) or die ('Error en '.$sentPer.' - '.mysqli_erro($link));
+				$queryPer = mysqli_query($link, $sentPer) or die ('Error en '.$sentPer.' - '.mysqli_error($link));
 				//recogo las personas que se le tienen que quitar el proyecto
 				$dniSel = $_GET['quitar'];
 				foreach ($dniSel as $dni) {

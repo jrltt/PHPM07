@@ -9,7 +9,7 @@
 		{
 			if ( self::$conexion == null ) {
 				try {
-					self::$conexion = new PDO ("mysql:host=localhost;dbname=mwc14a", "root", "");
+					self::$conexion = new PDO ("mysql:host=localhost;dbname=mwc14a", "root", "1234");
 				} catch (PDOException $e) {
 					echo 'Error en la conexion: '. $e->getMessage();
 				}
@@ -68,8 +68,12 @@
 		public function conVis() {
 			try {
 				$resultado = parent::$conexion->query(
-					"SELECT visnom,visdia1,visdia2,visdia3,visdia4,empid 
-					FROM visitant");
+					// "SELECT visnom,visdia1,visdia2,visdia3,visdia4,empid, empnom 
+					// FROM visitant, empresa"
+				"SELECT visnom,visdia1,visdia2,visdia3,visdia4,visitant.empid, empnom 
+				FROM visitant, empresa 
+				WHERE visitant.empid = empresa.empid
+				ORDER BY empnom");
 				$resultado->setFetchMode(PDO::FETCH_CLASS,'Visitant');
 				$i = 0;
 				while ( $vis = $resultado->fetch() ) {
